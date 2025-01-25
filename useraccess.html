@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="user.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <h1>Welcome, User!</h1>
+    <div class="user-section">
+      <h2>Available Notes</h2>
+      
+      <!-- List of Notes -->
+      <div id="notes-container">
+        <!-- Example note -->
+        <div class="note-card">
+          <h3>Maths Notes</h3>
+          <iframe src="path/to/maths-notes.pdf#page=1" class="preview-iframe"></iframe>
+          <p>*Only the first 3 pages are visible. Download to view the full document.</p>
+          <button onclick="downloadFile('path/to/maths-notes.pdf')">Download Full Note</button>
+          <button onclick="leaveReview('Maths Notes')">Leave a Review</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function downloadFile(path) {
+      window.location.href = path;
+    }
+
+    function leaveReview(noteTitle) {
+      const review = prompt(`Leave your review for ${noteTitle}:`);
+      if (review) {
+        alert('Thanks for your review!');
+        // Backend API can store the review
+      }
+    }
+  </script>
+</body>
+</html>

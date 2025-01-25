@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <h1>Welcome, Admin!</h1>
+    <div class="admin-section">
+      <h2>Admin Options</h2>
+      
+      <!-- Upload Notes -->
+      <form id="upload-notes" enctype="multipart/form-data" method="post" action="/upload">
+        <label for="note-title">Note Title:</label>
+        <input type="text" id="note-title" name="noteTitle" required>
+        <label for="note-file">Upload PDF:</label>
+        <input type="file" id="note-file" name="noteFile" accept=".pdf" required>
+        <button type="submit">Upload Notes</button>
+        
+        
+      </form>
+
+      <!-- View Downloads -->
+      <div id="downloads-section">
+        <h3>Your Notes and Downloads:</h3>
+        <ul id="notes-list">
+          <!-- Dynamically populated list of notes -->
+        </ul>
+      </div>
+
+      <!-- Rewards -->
+      <div id="rewards-section">
+        <h3>Rewards:</h3>
+        <p>You have earned <span id="rewards-count">0</span> reward points based on reviews and downloads.</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    
+
+    const rewardsPerDownload = 10; // Reward points per download
+
+    // Populate Notes and Downloads
+    const notesList = document.getElementById('notes-list');
+    notes.forEach(note => {
+      const li = document.createElement('li');
+      li.innerText = `${note.title} - Downloads: ${note.downloads}`;
+      notesList.appendChild(li);
+    });
+
+    // Calculate Rewards
+    const rewardsCount = notes.reduce((acc, note) => acc + note.downloads * rewardsPerDownload, 0);
+    document.getElementById('rewards-count').innerText = rewardsCount;
+  </script>
+</body>
+</html>
